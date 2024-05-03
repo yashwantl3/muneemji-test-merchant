@@ -1,23 +1,14 @@
-const express = require('express');
-const cors = require('cors');
-const serverless = require('serverless-http');
+exports.handler = async (event) => {
+  // Access POST data (if applicable)
+  const postData = JSON.parse(event.body);
 
-const app = express();
-const port = process.env.PORT || 8080;
+  // Process the POST data here (e.g., store it in a database)
 
-app.use(cors());
-
-app.get('/', (req, res) => {
-    res.send({
-        "status": "CAPTURE_SUCCESSFUL"
-    });
-});
-
-app.post('/', (req, res) => {
-    res.send({
-        "status": "CAPTURE_SUCCESSFUL"
-    });
-});
-
-// Wrap Express app with serverless-http
-module.exports.handler = serverless(app);
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({
+      status: "CAPTURE_SUCCESSFUL",
+    }),
+  };
+  return response;
+};
