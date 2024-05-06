@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.use(cors());
+app.use(express.json());
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -21,9 +22,16 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  res.send({
-    "status": "CAPTURE_SUCCESSFUL"
-  });
+    if(req.body.payment_status == 'SUCCESS'){
+        res.send({
+            "status": "CAPTURE_SUCCESSFUL"
+          });
+    } 
+    else{
+        res.send({
+            "status": "CAPTURE_FAILURE"
+          });
+    }
 });
 
 app.listen(port, () => {
