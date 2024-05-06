@@ -22,15 +22,16 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
+    console.log(req.body)
     if(req.body.payment_status == 'SUCCESS'){
         res.send({
             "status": "CAPTURE_SUCCESSFUL"
-          });
+        });
     } 
     else{
         res.send({
             "status": "CAPTURE_FAILURE"
-          });
+        });
     }
 });
 
