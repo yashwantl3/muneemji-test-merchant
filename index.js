@@ -35,7 +35,7 @@ app.post('/', (req, res) => {
     }
 });
 
-app.post('masspayment',(req,res) => {
+app.post('/masspayment',(req,res) => {
   res.send({
       data: null,
       succeeded: false,
