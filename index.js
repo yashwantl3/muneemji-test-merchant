@@ -35,6 +35,18 @@ app.post('/', (req, res) => {
     }
 });
 
+app.post('masspayment',(req,res) => {
+  res.send({
+      data: null,
+      succeeded: false,
+      error: {
+        message: "You don't have a sufficient balance in your account to complete this transaction.",
+        code: 105,
+        externalCode: null
+      }
+  });
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
 });
